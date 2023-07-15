@@ -1,2 +1,4 @@
-package com.vholvetskyi.ideas;public class QuiteIdeasApplicationException {
+package com.vholvetskyi.ideas;
+
+public class QuiteIdeasApplicationException extends RuntimeException {
 }
