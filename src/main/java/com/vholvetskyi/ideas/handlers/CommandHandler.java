@@ -1,4 +1,4 @@
-package com.vholvetskyi.ideas;
+package com.vholvetskyi.ideas.handlers;
 
 import com.vholvetskyi.ideas.input.UserInputCommand;
 
