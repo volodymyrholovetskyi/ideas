@@ -1,5 +1,6 @@
 package com.vholvetskyi.ideas.model;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public enum Action {
@@ -11,11 +12,9 @@ public enum Action {
     }
 
     public static Action of(String value) {
-        for (Action action : values()) {
-            if (Objects.equals(action.value, value)) {
-                return action;
-            }
-        }
-        throw new IllegalArgumentException("Unknown action: " + value);
+        return Arrays.stream(values())
+                .filter(a -> Objects.equals(a.value, value))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Unknown action: " + value));
     }
 }
