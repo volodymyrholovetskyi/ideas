@@ -6,8 +6,8 @@
 >- Data stored in a file on the local file system
 
 ### Requirements:
-
-> - Catalog of questions and answers to them
+>- Writing information to a file in JSON format
+>- Catalog of questions and answers to them
 >- Questions can have any number of answers
 >- The answer cannot exist without the question
 >- The questions are divided into categories
