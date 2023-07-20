@@ -3,18 +3,23 @@ package com.vholvetskyi.ideas;
 import com.vholvetskyi.ideas.handlers.*;
 import com.vholvetskyi.ideas.input.UserInputCommand;
 import com.vholvetskyi.ideas.input.UserInputManager;
-import com.vholvetskyi.ideas.model.Category;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class IdeasApplication {
+
+    private static Logger LOG = Logger.getLogger(IdeasApplication.class.getName());
+
     public static void main(String[] args) {
         new IdeasApplication().start();
     }
+
     private void start() {
-        System.out.println("Start app..");
+        LOG.info("Start app..");
 
         boolean applicationLoop = true;
 
@@ -24,11 +29,12 @@ public class IdeasApplication {
         handlers.add(new QuiteCommandHandler());
         handlers.add(new CategoryCommandHandler());
         handlers.add(new QuestionCommandHandler());
+        handlers.add(new AnswerCommandHandler());
 
         while (applicationLoop) {
             try {
                 UserInputCommand userInputCommand = userInputManager.nextCommand();
-                System.out.println(userInputCommand);
+                LOG.info(userInputCommand.toString());
 
                 Optional<CommandHandler> currentHandler = Optional.empty();
                 for (CommandHandler handler : handlers) {
@@ -42,10 +48,12 @@ public class IdeasApplication {
                         .handle(userInputCommand);
 
             } catch (QuiteIdeasApplicationException e) {
-                System.out.println("Quite...");
+                LOG.info("Quite...");
                 applicationLoop = false;
+            } catch (IllegalArgumentException e) {
+                LOG.log(Level.WARNING, "Validation exception " + e.getMessage());
             } catch (Exception e) {
-                e.printStackTrace();
+                LOG.log(Level.SEVERE, "Unknown error", e);
             }
         }
     }

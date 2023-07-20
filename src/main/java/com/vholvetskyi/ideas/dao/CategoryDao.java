@@ -11,9 +11,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CategoryDao {
+
+    private static Logger LOG = Logger.getLogger(CategoryDao.class.getName());
     private static final Path CATEGORIES_TXT = Paths.get("./categories.txt");
 
     private ObjectMapper objectMapper;
@@ -24,10 +27,11 @@ public class CategoryDao {
 
     private List<Category> getCategories() {
         try {
-            return objectMapper.readValue(Files.readString(CATEGORIES_TXT), new TypeReference<>() {
+            return objectMapper.readValue(Files.readString(CATEGORIES_TXT),
+                    new TypeReference<>() {
             });
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.log(Level.WARNING, "Error on qetCategories", e);
             return new ArrayList<>();
         }
     }
@@ -43,7 +47,7 @@ public class CategoryDao {
             String jsonValue = objectMapper.writeValueAsString(categories);
             Files.writeString(CATEGORIES_TXT, jsonValue);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.log(Level.WARNING, "Error on addCategory", e);
         }
     }
 

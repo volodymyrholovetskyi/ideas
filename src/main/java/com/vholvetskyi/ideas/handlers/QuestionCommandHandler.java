@@ -7,9 +7,11 @@ import com.vholvetskyi.ideas.model.Category;
 import com.vholvetskyi.ideas.model.Question;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.logging.Logger;
 
 public class QuestionCommandHandler extends BaseCommandHandler {
+
+    private static Logger LOG = Logger.getLogger(QuestionCommandHandler.class.getName());
     private static final String COMMAND_NAME = "question";
 
     private QuestionDao questionDao;
@@ -27,15 +29,24 @@ public class QuestionCommandHandler extends BaseCommandHandler {
 
     @Override
     public void handle(UserInputCommand command) {
+        if (command.getAction() == null) {
+            throw new IllegalArgumentException("Action can't be null");
+        }
         switch (command.getAction()) {
             case LIST:
-                System.out.println("List of questions...");
+                LOG.info("List of questions...");
+                if (!command.getParam().isEmpty()) {
+                    throw new IllegalArgumentException("Question list doesn't support any additional params");
+                }
                 List<Question> categories = questionDao.findAll();
                 categories.forEach(System.out::println);
                 break;
 
             case ADD:
-                System.out.println("Add question");
+                LOG.info("Add question");
+                if (command.getParam().size() != 2) {
+                    throw new IllegalArgumentException("Wrong command format. Check help for more information");
+                }
                 String categoryName = command.getParam().get(0);
                 String questionName = command.getParam().get(1);
                 Category category = categoryDao.findOne(categoryName)
@@ -49,6 +60,5 @@ public class QuestionCommandHandler extends BaseCommandHandler {
                                 command.getAction(), command.getCommand()));
             }
         }
-
     }
 }
