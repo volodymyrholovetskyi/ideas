@@ -7,7 +7,7 @@
 
 ### Requirements:
 
->- Catalog of questions and answers to them
+> - Catalog of questions and answers to them
 >- Questions can have any number of answers
 >- The answer cannot exist without the question
 >- The questions are divided into categories
@@ -33,5 +33,5 @@
 | question list                               | questionList()                               | Displaying all questions                            |
 | answer add QuestionName <br> AnswerName     | addAnswer(QuestionName, <br> AnswerName)     | Create a new answer <br> and add it to a question   |
 | answer list                                 | answerList()                                 | Displaying all answer                               |
-| quite                                       | quitApplication()                            | Exit the program                                    |
-
+| help                                        | helpApplication()                            | Description of using the console                    |
+| quite                                       | quiteApplication()                           | Exit the program                                    |
