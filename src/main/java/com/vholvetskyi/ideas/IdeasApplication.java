@@ -1,9 +1,6 @@
 package com.vholvetskyi.ideas;
 
-import com.vholvetskyi.ideas.handlers.CategoryCommandHandler;
-import com.vholvetskyi.ideas.handlers.CommandHandler;
-import com.vholvetskyi.ideas.handlers.HelpCommandHandler;
-import com.vholvetskyi.ideas.handlers.QuiteCommandHandler;
+import com.vholvetskyi.ideas.handlers.*;
 import com.vholvetskyi.ideas.input.UserInputCommand;
 import com.vholvetskyi.ideas.input.UserInputManager;
 import com.vholvetskyi.ideas.model.Category;
@@ -26,6 +23,7 @@ public class IdeasApplication {
         handlers.add(new HelpCommandHandler());
         handlers.add(new QuiteCommandHandler());
         handlers.add(new CategoryCommandHandler());
+        handlers.add(new QuestionCommandHandler());
 
         while (applicationLoop) {
             try {

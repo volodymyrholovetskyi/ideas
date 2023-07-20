@@ -9,10 +9,12 @@ public class Question {
 
     private List<Answer> answers;
 
-    public Question(String name, Category category, List<Answer> answers) {
+    public Question() {
+
+    }
+    public Question(String name, Category category) {
         this.name = name;
         this.category = category;
-        this.answers = answers;
     }
 
     public String getName() {
@@ -37,5 +39,14 @@ public class Question {
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "name='" + name + '\'' +
+                ", category=" + category +
+                ", answers=" + answers +
+                '}';
     }
 }

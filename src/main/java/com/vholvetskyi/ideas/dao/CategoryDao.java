@@ -1,5 +1,7 @@
 package com.vholvetskyi.ideas.dao;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vholvetskyi.ideas.model.Category;
 
 import java.io.IOException;

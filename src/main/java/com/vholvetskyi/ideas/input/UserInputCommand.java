@@ -1,12 +1,14 @@
 package com.vholvetskyi.ideas.input;
 
+import com.vholvetskyi.ideas.model.Action;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserInputCommand {
 
     private String command;
-    private String action;
+    private Action action;
 
     private List<String> param;
 
@@ -17,7 +19,7 @@ public class UserInputCommand {
                 this.command = array[0];
             }
             if (array.length > 1) {
-                this.action = array[1];
+                this.action = Action.of(array[1]);
             }
             this.param = new ArrayList<>();
             for (int i = 2; i < array.length; i++) {
@@ -30,7 +32,7 @@ public class UserInputCommand {
         return command;
     }
 
-    public String getAction() {
+    public Action getAction() {
         return action;
     }
 
