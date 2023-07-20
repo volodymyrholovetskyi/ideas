@@ -1,5 +1,6 @@
 package com.vholvetskyi.ideas.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Question {
@@ -15,6 +16,7 @@ public class Question {
     public Question(String name, Category category) {
         this.name = name;
         this.category = category;
+        this.answers = new ArrayList<>();
     }
 
     public String getName() {
