@@ -2,7 +2,7 @@
 
 ### Design assumptions:
 
->- Console application - communication with the user from the console level
+> - Console application - communication with the user from the console level
 >- Data stored in a file on the local file system
 
 ### Requirements:
@@ -15,9 +15,23 @@
 
 ### Example:
 
-`Category - Free time`\
-`Question - How to spend the evening?`\
-`Answer:`
- `1. Watch a movie`
- `2. Go for a walk`
- `3. Learn Java`
+- Data model:
+
+| model    | data                                                   |     
+|----------|--------------------------------------------------------|
+| Category | Free time                                              |  
+| Question | How to spend the evening?                              | 
+| Answer   | 1.Watch a movie <br> 2.Go for a walk <br> 3.Learn Java |
+
+- Interaction with the console:
+
+| command                                     | call method                                  | description                                         |
+|---------------------------------------------|----------------------------------------------|-----------------------------------------------------|
+| category add                                | addCategory()                                | Create a new category                               |
+| category list                               | categoryList()                               | Displaying all categories                           |
+| question add CategoryName <br> QuestionName | addQuestion(CategoryName, <br> QuestionName) | Create a new question <br> and add it to a category |
+| question list                               | questionList()                               | Displaying all questions                            |
+| answer add QuestionName <br> AnswerName     | addAnswer(QuestionName, <br> AnswerName)     | Create a new answer <br> and add it to a question   |
+| answer list                                 | answerList()                                 | Displaying all answer                               |
+| quite                                       | quitApplication()                            | Exit the program                                    |
+
