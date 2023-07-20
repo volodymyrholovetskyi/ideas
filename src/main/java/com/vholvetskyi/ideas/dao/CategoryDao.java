@@ -9,34 +9,48 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.logging.Logger;
 
 public class CategoryDao {
-
     private static final Path CATEGORIES_TXT = Paths.get("./categories.txt");
 
-    public List findAll() {
+    private ObjectMapper objectMapper;
+
+    public CategoryDao() {
+        this.objectMapper = new ObjectMapper();
+    }
+
+    private List<Category> getCategories() {
         try {
-            List<String> lines = Files.readAllLines(CATEGORIES_TXT);
-            List<Category> categories = new ArrayList<>();
-            for (String line : lines) {
-                categories.add(new Category(line));
-            }
-            return categories;
+            return objectMapper.readValue(Files.readString(CATEGORIES_TXT), new TypeReference<>() {
+            });
         } catch (IOException e) {
             e.printStackTrace();
-            return Collections.emptyList();
+            return new ArrayList<>();
         }
+    }
+
+    public List<Category> findAll() {
+        return getCategories();
     }
 
     public void add(Category category) {
         try {
-            List<String> lines = Files.readAllLines(CATEGORIES_TXT);
-            lines.add(category.getName());
-            Files.writeString(CATEGORIES_TXT, String.join("\n", lines));
+            List<Category> categories = getCategories();
+            categories.add(category);
+            String jsonValue = objectMapper.writeValueAsString(categories);
+            Files.writeString(CATEGORIES_TXT, jsonValue);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Optional<Category> findOne(String categoryName) {
+        return getCategories()
+                .stream()
+                .filter(c -> c.getName().equals(categoryName))
+                .findFirst();
     }
 }
