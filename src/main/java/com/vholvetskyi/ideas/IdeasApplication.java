@@ -1,10 +1,9 @@
 package com.vholvetskyi.ideas;
 
-import com.vholvetskyi.ideas.handlers.CommandHandler;
-import com.vholvetskyi.ideas.handlers.HelpCommandHandler;
-import com.vholvetskyi.ideas.handlers.QuiteCommandHandler;
+import com.vholvetskyi.ideas.handlers.*;
 import com.vholvetskyi.ideas.input.UserInputCommand;
 import com.vholvetskyi.ideas.input.UserInputManager;
+import com.vholvetskyi.ideas.model.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +13,6 @@ public class IdeasApplication {
     public static void main(String[] args) {
         new IdeasApplication().start();
     }
-
-    //TODO Created new branch
     private void start() {
         System.out.println("Start app..");
 
@@ -25,6 +22,8 @@ public class IdeasApplication {
         List<CommandHandler> handlers = new ArrayList<>();
         handlers.add(new HelpCommandHandler());
         handlers.add(new QuiteCommandHandler());
+        handlers.add(new CategoryCommandHandler());
+        handlers.add(new QuestionCommandHandler());
 
         while (applicationLoop) {
             try {
@@ -39,7 +38,7 @@ public class IdeasApplication {
                     }
                 }
                 currentHandler
-                        .orElseThrow(() -> new IllegalArgumentException("Uknown handler: " + userInputCommand.getCommand()))
+                        .orElseThrow(() -> new IllegalArgumentException("Unknown handler: " + userInputCommand.getCommand()))
                         .handle(userInputCommand);
 
             } catch (QuiteIdeasApplicationException e) {

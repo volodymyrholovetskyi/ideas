@@ -1,0 +1,16 @@
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\input\UserInputCommand.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\QuiteIdeasApplicationException.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\handlers\HelpCommandHandler.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\handlers\QuestionCommandHandler.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\input\UserInputManager.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\model\Answer.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\IdeasApplication.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\handlers\CategoryCommandHandler.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\model\Action.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\model\Category.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\model\Question.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\handlers\CommandHandler.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\dao\QuestionDao.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\handlers\BaseCommandHandler.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\handlers\QuiteCommandHandler.java
+C:\IT\JAVA\APP\Ideas\src\main\java\com\vholvetskyi\ideas\dao\CategoryDao.java
